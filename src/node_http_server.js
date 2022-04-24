@@ -30,7 +30,8 @@ class NodeHttpServer {
     this.mediaroot = config.http.mediaroot || HTTP_MEDIAROOT;
     this.config = config;
 
-    let app = Express();
+    let app = this.app = config.http.app ? config.http.app : Express();
+
     app.use(bodyParser.json());
 
     app.use(bodyParser.urlencoded({ extended: true }));
@@ -88,6 +89,8 @@ class NodeHttpServer {
   }
 
   run() {
+
+
     this.httpServer.listen(this.port, () => {
       Logger.log(`Node Media Http Server started on port: ${this.port}`);
     });

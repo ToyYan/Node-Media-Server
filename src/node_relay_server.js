@@ -127,7 +127,7 @@ class NodeRelayServer {
       if (isPull && app === conf.app && !context.publishers.has(streamPath)) {
         let hasApp = conf.edge.match(/rtmp:\/\/([^\/]+)\/([^\/]+)/);
         conf.ffmpeg = this.config.relay.ffmpeg;
-        conf.inPath = hasApp ? `${conf.edge}/${stream}` : `${conf.edge}${streamPath}`;
+        conf.inPath = hasApp ? `${conf.edge}/${stream}` : `${conf.edge}`;
         conf.ouPath = `rtmp://127.0.0.1:${this.config.rtmp.port}${streamPath}`;
         if(Object.keys(args).length > 0) {
           conf.inPath += '?';
